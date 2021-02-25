@@ -1,5 +1,6 @@
 <template>
   <tr @click="$router.push({ name: 'View', params: { customer: item, color } })">
+  <!-- <tr @dblclick="handleConcat(item)"> -->
     <td>
       <a href="" @click.prevent="">
         <v-avatar :class="color">

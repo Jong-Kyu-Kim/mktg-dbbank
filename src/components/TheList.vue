@@ -4,7 +4,9 @@
       <header>
         <v-flex>
           <v-h2>
-            <span class="current">LIST</span>            
+            <span class="current">
+              {{ unsubscribe ? '수신거부 리스트' : returned ? '발송실패 리스트': '고객 리스트' }}
+            </span>
           </v-h2>
         </v-flex>
 
@@ -51,7 +53,16 @@ export default {
     ListTableContainer,
     ListPageContainer
   },
-
+  props: {
+    unsubscribe: {
+      type: Boolean,
+      default: false,
+    },
+    returned: {
+      type: Boolean,
+      default: false,
+    }
+  },
   methods: {
     scroll() {      
       const $tableSort = $('.table_sort table');

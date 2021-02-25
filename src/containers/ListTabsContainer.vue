@@ -1,5 +1,5 @@
 <template>
-  <ListTabs :unsubscribe="unsubscribe" :exist="exist" :handle-tab-menu="handleTabMenu" />
+  <ListTabs :unsubscribe="unsubscribe" :returned="returned" :handle-tab-menu="handleTabMenu" />
 </template>
 
 <script>
@@ -19,12 +19,12 @@ export default {
     unsubscribe() {
       return this.filter.unsubscribe;
     },
-    exist() {
-      return this.filter.exist;
+    returned() {
+      return this.filter.returned;
     },    
   },
   methods: {
-    handleTabMenu(unsubscribe, exist) {
+    handleTabMenu(unsubscribe, returned) {
       // $('input[type=text]').each(function() {
       //   $(this).val('');
       // })
@@ -34,7 +34,7 @@ export default {
         limit: this.$store.state.limit,
         filter: {
           unsubscribe,
-          exist        
+          returned        
         }
       });
     },

@@ -20,7 +20,7 @@ export const initialFilter = {
     toDate: `${new Date().getFullYear()}-${getTwoDigit(new Date().getMonth() + 1)}-${getTwoDigit(new Date().getDate())}`
   },
   unsubscribe: false,
-  exist: true
+  returned: false
 }
 
 const store = new Vuex.Store({

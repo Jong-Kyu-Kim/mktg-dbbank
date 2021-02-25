@@ -18,7 +18,7 @@ module.exports = `
     history: Boolean
     keyword: String
     unsubscribe: Boolean
-    exist: Boolean
+    returned: Boolean
     name: DBBankTarget
     company: DBBankTarget
     department: DBBankTarget

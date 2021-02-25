@@ -24,6 +24,7 @@ module.exports = {
       classification: String
       unsubscribe: Date
       exist: Boolean
+      returned: String
       modify: Date
       histories: [DBBankCustomers]
     }

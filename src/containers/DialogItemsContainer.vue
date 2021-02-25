@@ -55,15 +55,15 @@ export default {
     }
   },
   computed: {
-    exist() {
-      return this.$store.state.filter.exist;
+    returned() {
+      return this.$store.state.filter.returned;
     },
     unsubscribe() {
       return this.$store.state.filter.unsubscribe;
     }
   },
   watch: {
-    exist() {
+    returned() {
       this.setInitData();
     },    
     unsubscribe() {

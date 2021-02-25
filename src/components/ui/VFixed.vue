@@ -8,7 +8,7 @@
 .fixed {
   position: fixed;
   top: 0;
-  padding-top: 35px;
+  padding-top: 37px;
   left: 240px;
   width: calc(100% - 240px);
   min-width: 1040px;

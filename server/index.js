@@ -56,7 +56,7 @@ app.get('/dbbank-new-customers', async (req, res) => {
 
   await customers.find({}, (err, doc) => {
     const loop = i => new Promise(async (resolve, reject) => {
-      const { _id, name, phone, email, company, department, position, classification, from, note, date, unsubscribe, exist, modify } = doc[i];
+      const { _id, name, phone, email, company, department, position, classification, from, note, date, unsubscribe, returned, modify } = doc[i];
       const newCustomer = {
         _id,
         name,
@@ -68,7 +68,7 @@ app.get('/dbbank-new-customers', async (req, res) => {
         classification,
         date,
         unsubscribe,
-        exist,
+        returned,
         modify,
         histories: [
           {
@@ -129,7 +129,7 @@ app.get('/dbbank-new-customers', async (req, res) => {
                       classification,
                       date,
                       unsubscribe,
-                      exist,
+                      returned,
                       modify,
                       from,
                     }}

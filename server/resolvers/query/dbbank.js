@@ -1,5 +1,5 @@
 const customerGlobal = filter => {
-  const { history, exist, date } = filter;
+  const { history, returned, date } = filter;
   const keyword = new RegExp(filter.keyword, 'gi');
   const unsubscribe = filter.unsubscribe ? { $gt: new Date(0) } : { $lte: new Date(0) }
   const dateRange = { date: { $gte: new Date(date.fromDate), $lte: new Date(date.toDate) } }
@@ -7,7 +7,7 @@ const customerGlobal = filter => {
   const $and = [
     date.history ? { histories: { $elemMatch: dateRange } } : dateRange,
     { unsubscribe },
-    { exist },
+    { returned: returned ? { $not: {$eq: ''}} : '' },
     { $or: [
       { [history ? 'histories.name' : 'name']: keyword },
       { [history ? 'histories.company' : 'company']: keyword },
@@ -18,6 +18,7 @@ const customerGlobal = filter => {
       { [history ? 'histories.classification' : 'classification']: keyword },
       { [history ? 'histories.from' : 'from']: keyword },
       { [history ? 'histories.note' : 'from']: keyword },
+      { returned: keyword }
     ]},
     // { 'histories.from': '2012 ISEC' },
     

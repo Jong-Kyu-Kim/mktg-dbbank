@@ -4,8 +4,8 @@ import VueRouter from 'vue-router';
 const router = new VueRouter({
   mode: 'history',
   routes: [    
-    { path: '/dbbank', component: () => import('../components/TheList'), name: 'List' },
-    { path: '/dbbank', component: () => import('../components/TheView'), name: 'View', props: true },
+    { path: '/dbbank', component: () => import('../containers/ListContainer'), name: 'List' },
+    { path: '/dbbank', component: () => import('../containers/ViewContainer'), name: 'View', props: true },
   ]
 });
 

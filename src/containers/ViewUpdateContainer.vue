@@ -44,6 +44,7 @@ export default {
         item('이메일', 'email'),
         item('연락처', 'phone'),
         item('구분', 'classification'),
+        item('Log', 'returned'),
       ]
     },
   },
@@ -59,7 +60,7 @@ export default {
         query: gql`
           query ($filter: DBBankFilter, $skip: Int, $limit: Int) {
             dbbankCustomers(filter: $filter, skip: $skip, limit: $limit) {
-              _id, name, phone, email, company, department, position, classification, date, unsubscribe, exist, modify,
+              _id, name, phone, email, company, department, position, classification, date, unsubscribe, returned, modify,
               histories {
                 name, phone, email, company, department, position, from, note, date,
               }

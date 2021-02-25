@@ -22,7 +22,7 @@ export default {
         limit,
         filter: {
           unsubscribe: filter.unsubscribe,
-          exist: filter.exist,
+          returned: filter.returned
         }
       });      
     }    

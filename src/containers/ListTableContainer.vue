@@ -97,6 +97,7 @@ export default {
         });
       }
       else {
+        console.log('update targeted')
         this.concat.updateId = customer._id;
         this.concat.histories = customer.histories;
       }

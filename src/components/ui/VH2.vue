@@ -8,9 +8,13 @@
 h2 {
   display: flex;
   a {
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: $text-secondary;
+    span {
+      vertical-align: top;
+      border-bottom: 2px solid transparent;
+      &:hover {
+        box-sizing:border-box;
+        border-color: $text-secondary;
+      }      
     }
     + *::before {
       content: '';
@@ -18,12 +22,14 @@ h2 {
       margin: 0 12px;
       width: 10px;
       height: 17.5px;
+      vertical-align: middle;
       background: url(~svg/ico_chevron_right.svg) no-repeat;
+      background-size: 9px;
     }  
   }
   span {
     font-weight: 700;
-    font-size: 22px;
+    font-size: 18px;
     &.current {
       color: $text-dark;
     }

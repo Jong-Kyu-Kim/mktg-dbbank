@@ -73,12 +73,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .table_sort {
-  margin-top: 260px;
+  margin-top: 257px;
   padding: 47px 30px 0;
   table {
     &:first-child {
       position: fixed;
-      top: 260px;
+      top: 257px;
       left: 270px;
       width: calc(100% - 240px - 60px);
       min-width: 980px;

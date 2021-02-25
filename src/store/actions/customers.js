@@ -12,10 +12,10 @@ const customers = ({ commit, state }, payload) => {
 
     if (payload.filter) {
       const unsubscribe = payload.filter.unsubscribe !== undefined && payload.filter.unsubscribe !== state.filter.unsubscribe;
-      const exist = payload.filter.exist !== undefined && payload.filter.exist !== state.filter.exist;
+      const returned = payload.filter.returned !== undefined && payload.filter.returned !== state.filter.returned;
       
 
-      if (unsubscribe || exist) {
+      if (unsubscribe || returned) {
         filter = { ...initialFilter, ...payload.filter }
       }
       else {
@@ -31,7 +31,7 @@ const customers = ({ commit, state }, payload) => {
         query($filter: DBBankFilter, $sort: [DBBankSort], $skip: Int, $limit: Int) {
           dbbankCount(filter: $filter)
           dbbankCustomers(filter: $filter, sort: $sort, skip: $skip, limit: $limit) {
-            _id, name, phone, email, company, department, position, classification, from, date, unsubscribe, exist, modify,
+            _id, name, phone, email, company, department, position, classification, from, date, unsubscribe, returned, modify,
             histories {
               name, phone, email, company, department, position, from, note, date,
             }

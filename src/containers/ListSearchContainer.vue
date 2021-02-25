@@ -21,15 +21,15 @@ export default {
     }
   },
   computed: {
-    exist() {
-      return this.$store.state.filter.exist;
+    returned() {
+      return this.$store.state.filter.returned;
     },
     unsubscribe() {
       return this.$store.state.filter.unsubscribe;
     }
   },
   watch: {
-    exist() {
+    returned() {
       this.setInitData();
     },    
     unsubscribe() {
@@ -43,7 +43,17 @@ export default {
       $('input[type=text].search.global').val('');
     },
     handleGlobalHistory(e) {
-      this.history = e.currentTarget.checked;
+      const history = e.currentTarget.checked;
+      this.history = history;
+      
+      const { $store, keyword } = this;
+
+      $store.dispatch('customers', {
+        history,
+        skip: 0,
+        limit: $store.state.limit,
+        filter: { keyword, history }
+      });
     },
     handleGlobalSearch(e) {
       e.preventDefault();
@@ -55,7 +65,7 @@ export default {
       $store.dispatch('customers', {
         history,
         skip: 0,
-        limit: this.$store.state.limit,
+        limit: $store.state.limit,
         filter: { keyword, history }
       });
     },

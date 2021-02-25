@@ -7,34 +7,36 @@
           <col>
         </colgroup>
         <tbody>
-          <tr v-for="(item, i) in items" :key="i">
-            <th>
-              <span>{{ item.label }}</span>
-            </th>
-            <td>
-              <div>
-                <div v-if="!target || target !== item.target">
-                  <span>{{ item.value ? item.value : '(미입력)' }}</span>
-                  <v-btn v-if="user.dept === 'GS사업팀'" class="btn small" :click="e => setItem(item)">
-                    <span>변경</span>
-                  </v-btn>
-                </div>
-                <v-flex v-if="target === item.target" class="start">
-                  <div>
-                    <v-input type="text" :value="value" :keyup="e => setItem({ target, value: e.currentTarget.value })" />
+          <template v-for="(item, i) in items">
+            <tr v-if="item.label === 'Log' ? item.value ? true : false : true" :key="i">
+              <th>
+                <span>{{ item.label }}</span>
+              </th>
+              <td>
+                <div>
+                  <div v-if="!target || target !== item.target">
+                    <span>{{ item.value ? item.value : '(미입력)' }}</span>
+                    <v-btn v-if="user.dept === 'GS사업팀' && item.label !== 'Log'" class="btn small" :click="e => setItem(item)">
+                      <span>변경</span>
+                    </v-btn>
                   </div>
-                  <v-flex class="start">
-                    <v-btn class="btn primary" :click="update">
-                      <span>저장</span>
-                    </v-btn>
-                    <v-btn class="btn" :click="e => setItem({ target: '', value: '' })">
-                      <span>취소</span>
-                    </v-btn>
+                  <v-flex v-if="target === item.target" class="start">
+                    <div>
+                      <v-input type="text" :value="value" :keyup="e => setItem({ target, value: e.currentTarget.value })" />
+                    </div>
+                    <v-flex class="start">
+                      <v-btn class="btn primary" :click="update">
+                        <span>저장</span>
+                      </v-btn>
+                      <v-btn class="btn" :click="e => setItem({ target: '', value: '' })">
+                        <span>취소</span>
+                      </v-btn>
+                    </v-flex>
                   </v-flex>
-                </v-flex>
-              </div>
-            </td>
-          </tr>
+                </div>
+              </td>
+            </tr>
+          </template>   
         </tbody>            
       </v-table>
     </v-scrollbar>

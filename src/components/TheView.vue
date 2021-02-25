@@ -4,8 +4,10 @@
       <header>
         <v-flex>
           <v-h2>
-            <a href="" @click.prevent="$router.push({ name: 'List'})">
-              <span>LIST</span>
+            <a href="" @click.prevent="$router.push({ name: 'List'})">              
+              <span>
+                {{ unsubscribe ? '수신거부 리스트' : returned ? '발송실패 리스트': '고객 리스트' }}
+              </span>
             </a>
             <span class="current">{{ customer.name }}</span>
           </v-h2>
@@ -75,6 +77,14 @@ export default {
     color: {
       type: String,
       default: ''
+    },
+    unsubscribe: {
+      type: Boolean,
+      default: false,
+    },
+    returned: {
+      type: Boolean,
+      default: false,
     }
   },
 }

@@ -14,8 +14,8 @@ module.exports = () => {
       imap.on('mail', numNewMsgs => {
         // console.log(numNewMsgs + " messages has arrived");                
 
-        // imap.search([ ['HEADER', 'from', 'webmaster'] ], (err, results) => { // 수신거부
-        imap.search([ ['UNSEEN'], ['HEADER', 'from', 'postmaster@sp-ace'] ], (err, results) => { // 리턴메일
+        // imap.search([ ['HEADER', 'from', 'webmaster'] ], (err, results) => {
+        imap.search([ ['UNSEEN'] ], (err, results) => {
           if (err) console.log(err);
   
           console.log(results.length)
@@ -37,16 +37,12 @@ module.exports = () => {
                   const subject = parsed.headers.get('subject');
                   const date = parsed.headers.get('date');
 
-                  if (from === 'postmaster@sp-ace') {
-                    const email = parsed.html.substring(parsed.html.indexOf('<a href="'), parsed.html.indexOf('</a>')).split('>')[1];
-                    console.log(email)
-                  }
+                  let email;
 
                   // 수신거부 신청 처리
                   // if (from.indexOf('webmaster') >= 0) {
                   //   const str = (string, num) => string.substr(num, string.length - num);
                   //   const srj = val => val.split('').reverse().join('');
-                  //   let email;
 
                   //   if (from === 'webmaster@fasoo.com') {
                   //     email = subject.substr(10, subject.length - 10).toLowerCase();
@@ -63,31 +59,46 @@ module.exports = () => {
                   //   if (email) {
                   //     console.log(email);
 
+                  // await imap.move(results, 'Unsubscribe', err => {
+                  //   if (err) console.log(err)
+                  // });                  
+
                   //     await mongoose.model('dbbank_customer', models.dbbankCustomer).updateMany(
                   //       { email },
                   //       { $set: { unsubscribe: new Date(date) }
                   //     });   
                   //   }                 
                   // }
+
+                  //console.log(JSON.stringify(parsed, null, 2))
   
                   // 리턴메일 처리
-                  if (parsed.html && parsed.text && parsed.text.indexOf('returned')) {
-                    const email = parsed.html.substring(parsed.html.indexOf('<a href="'), parsed.html.indexOf('</a>')).split('>')[1];
-                    const returned = parsed.text.substring(parsed.text.indexOf("'<") + 2, parsed.text.indexOf(">'")).replace(/\n/gi, ' ');
+                  if (typeof parsed.text === 'string') {
+                    let returned;
+
+                    // if (parsed.text.indexOf('returned') >= 0) {
+                    //   const email = parsed.html.substring(parsed.html.indexOf('<a href="'), parsed.html.indexOf('</a>')).split('>')[1];
+                    //   const returned = parsed.text.substring(parsed.text.indexOf("'<") + 2, parsed.text.indexOf(">'")).replace(/\n/gi, ' ');
+                    // }
+
+                    if (subject ==='[Delivery Failure] 메일 전송 실패') {
+                      email = parsed.text.substring(parsed.text.indexOf('Receiver: ') + 10, parsed.text.indexOf('Subject:')).replace(/\n/gi, ' ');
+                      returned = parsed.text.substring(parsed.text.indexOf("Status: ") + 8, parsed.text.length - 1).replace(/\n/gi, ' ');
+                    }
+
+                    console.log(email)
+                    console.log(returned)
+                    console.log(date)
 
                     if (email) {
-                      console.log(email)
-                      // console.log(returned)
-                      // console.log(date)
-
-                      // await imap.move(results, 'Returned', err => {
-                      //   if (err) console.log(err)
-                      // });
+                      await imap.move(results, 'Returned', err => {
+                        if (err) console.log(err)
+                      });
     
-                      // await mongoose.model('dbbank_customer', models.dbbankCustomer).updateOne(
-                      //   { email },
-                      //   { $set: { returned }
-                      // })
+                      await mongoose.model('dbbank_customer', models.dbbankCustomer).updateOne(
+                        { email },
+                        { $set: { returned }
+                      })
                     }
                   }
                 });
@@ -111,9 +122,6 @@ module.exports = () => {
             f.once('error', err => console.log('Fetch error: ' + err));
             f.once('end', () => {
               //imap.end();
-              // imap.move(results, 'Unsubscribe', err => {
-              //   if (err) console.log(err)
-              // });
             });          
           }
         })    
