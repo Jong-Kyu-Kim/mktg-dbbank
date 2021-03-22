@@ -36,7 +36,7 @@ export default {
           // type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         });
   
-        saveAs(file, `${filter.unsubscribe ? '수신거부': !filter.returned ? '발송실패': '고객'} 리스트.xls`);        
+        saveAs(file, `${filter.unsubscribe ? '수신거부': filter.returned ? '발송실패': '고객'} 리스트.xls`);        
       })
     },
   },

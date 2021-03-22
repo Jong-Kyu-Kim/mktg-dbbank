@@ -1,5 +1,5 @@
 <template>
-  <TheView :unsubsbribe="unsubsbribe" :returned="returned" :customer="customer" :color="color" />
+  <TheView :unsubscribe="unsubscribe" :returned="returned" :customer="customer" :color="color" />
 </template>
 
 <script>
@@ -20,8 +20,8 @@ export default {
     }
   },
   computed: {
-    unsubsbribe() {
-      return this.$store.state.filter.unsubsbribe;
+    unsubscribe() {
+      return this.$store.state.filter.unsubscribe;
     },
     returned() {
       return this.$store.state.filter.returned;
