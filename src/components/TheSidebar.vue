@@ -10,15 +10,17 @@
         <!-- <li>
           <a href="/dbbank"><span>대시보드</span></a>
         </li> -->
-        <!-- <li>
-          <a href="" @click.prevent=""><span>고객 리스트</span></a>
+        <li>
+          <a href="" @click.prevent="() => handleMenu(false, false)">
+            <span>고객 리스트</span>
+          </a>
         </li>
         <li>
-          <a href="" @click.prevent=""><span>수신거부 리스트</span></a>
+          <a href="" @click.prevent="() => handleMenu(true, false)"><span>수신거부 리스트</span></a>
         </li>
         <li>
-          <a href="" @click.prevent=""><span>발송실패 리스트</span></a>
-        </li> -->
+          <a href="" @click.prevent="() => handleMenu(false, true)"><span>발송실패 리스트</span></a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -30,6 +32,12 @@ import { VH1 } from './ui';
 export default {
   components: {
     VH1
+  },
+  props: {
+    handleMenu: {
+      type: Function,
+      default() {}
+    }
   }
 }
 </script>

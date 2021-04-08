@@ -15,12 +15,17 @@
           <ListSearchContainer />
         </v-flex>
 
-        <ListFilterContainer />
+        <ListProductContainer />
 
-        <v-flex class="between">          
-          <ListTabsContainer />
+        <v-flex class="between">
+          <ListFilterContainer />
           <ListCountContainer />
         </v-flex>
+        
+        <!-- <v-flex class="between">          
+          <ListTabsContainer />
+          <ListCountContainer />
+        </v-flex> -->
       </header>
     </v-fixed>
     <ListTableContainer />
@@ -33,8 +38,9 @@ import Layout from './TheLayout';
 import { VFixed, VFlex, VH2 } from './ui';
 import ListDownloadContainer from 'containers/ListDownloadContainer';
 import ListSearchContainer from 'containers/ListSearchContainer';
+import ListProductContainer from 'containers/ListProductContainer';
 import ListFilterContainer from 'containers/ListFilterContainer';
-import ListTabsContainer from 'containers/ListTabsContainer';
+// import ListTabsContainer from 'containers/ListTabsContainer';
 import ListCountContainer from 'containers/ListCountContainer';
 import ListTableContainer from 'containers/ListTableContainer';
 import ListPageContainer from 'containers/ListPageContainer';
@@ -48,7 +54,8 @@ export default {
     ListDownloadContainer,
     ListSearchContainer,
     ListFilterContainer,
-    ListTabsContainer,
+    ListProductContainer,
+    // ListTabsContainer,
     ListCountContainer,
     ListTableContainer,
     ListPageContainer

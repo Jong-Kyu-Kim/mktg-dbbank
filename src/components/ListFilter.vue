@@ -56,9 +56,10 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
+  height: 59px;
   .dropdown {
     margin-right: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     button {
       display: flex;
       align-items: center;

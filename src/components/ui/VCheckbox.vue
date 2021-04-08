@@ -72,5 +72,8 @@ export default {
       }
     }  
   }
+  + .checkbox {
+    margin-left: 15px;
+  }
 }
 </style>

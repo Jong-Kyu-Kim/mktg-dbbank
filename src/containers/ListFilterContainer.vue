@@ -21,7 +21,7 @@ export default {
         { label: '구분', target: 'classification' },
         { label: '유입', target: 'from' },
         { label: '등록일', target: 'date' },
-        { label: '내용', target: 'note' },
+        // { label: '내용', target: 'note' },
       ],
     }
   },

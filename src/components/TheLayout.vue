@@ -1,7 +1,7 @@
 <template>
   <GlobalStyle>
     <div id="container">
-      <Sidebar />
+      <SidebarContainer />
       <main>
         <v-scrollbar :scroll="layoutScroll">
           <div id="content">
@@ -15,13 +15,13 @@
 
 <script>
 import GlobalStyle from './TheGlobalStyle';
-import Sidebar from './TheSidebar';
+import SidebarContainer from 'containers/SidebarContainer';
 import { VScrollbar } from './ui';
 
 export default {
   components: {
     GlobalStyle,
-    Sidebar,
+    SidebarContainer,
     VScrollbar
   },
   props: {
