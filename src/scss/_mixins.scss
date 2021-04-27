@@ -5,3 +5,46 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin icon($arg, $url) {
+  &::#{$arg} {
+    content: '';
+    position: relative;
+    display: inline-block;
+    margin-#{if($arg == before, right, left)}: 5px;
+    width: 18px;
+    height: 18px;
+    background: url(~svg/ico_#{$url}.svg) no-repeat center;
+  }
+}
+
+@mixin tooltip {
+  cursor: pointer;
+  + span {
+    display: none;
+    //transition: all .2s;
+  }
+  &:hover {
+    + span {
+      position: absolute;
+      display: block;
+      padding: 5px 10px;
+      color: $white;
+      z-index: 1;
+      background-color: #454952;
+      white-space: nowrap;
+      border-radius: 5px;    
+      &::before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        width: 0;
+        height: 0;
+        border-top: 0;
+        border-bottom: 12px solid #454952;
+        border-right: 12px solid transparent;
+        border-left: 12px solid  transparent;
+      }
+    }
+  }
+}

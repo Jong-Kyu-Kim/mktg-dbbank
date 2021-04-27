@@ -3,12 +3,13 @@ import Vuex from 'vuex';
 //import moment from 'moment';
 import customers from './actions/customers';
 import targetItems from './actions/targetItems';
+import settings from './actions/settings';
 
 Vue.use(Vuex);
 
-const getTwoDigit = value => {
+const getTwoDigit = (value) => {
   return value < 10 ? `0${value}` : `${value}`;
-}
+};
 
 export const initialFilter = {
   history: false,
@@ -17,24 +18,21 @@ export const initialFilter = {
     history: false,
     fromDate: '2011-01-01',
     //toDate: moment(new Date()).format('YYYY-MM-DD'),
-    toDate: `${new Date().getFullYear()}-${getTwoDigit(new Date().getMonth() + 1)}-${getTwoDigit(new Date().getDate())}`
+    toDate: `${new Date().getFullYear()}-${getTwoDigit(new Date().getMonth() + 1)}-${getTwoDigit(new Date().getDate())}`,
   },
   unsubscribe: false,
-  returned: false
-}
+  returned: false,
+};
 
 const store = new Vuex.Store({
   state: {
     user: null,
     filter: initialFilter,
     skip: 0,
-    limit: 40,    
+    limit: 40,
     count: 0,
     items: [],
-    sort: [
-      { date: -1 },
-      { name: 1 }
-    ]
+    sort: [{ date: -1 }, { name: 1 }],
   },
   mutations: {
     // setState(state, payload) {
@@ -52,13 +50,13 @@ const store = new Vuex.Store({
     },
     setSort(state, payload) {
       state.sort = payload;
-    },    
+    },
     setCount(state, payload) {
       state.count = payload;
     },
     setSkip(state, payload) {
       state.skip = payload;
-    },        
+    },
     setItems(state, payload) {
       state.items = payload;
     },
@@ -66,13 +64,15 @@ const store = new Vuex.Store({
       state.filter = payload;
       // state.filter = {
       //   ...state.filter,
-      //   ...payload        
+      //   ...payload
       // }
     },
   },
   actions: {
-    customers, targetItems
-  }
+    customers,
+    targetItems,
+    settings,
+  },
 });
 
 export default store;

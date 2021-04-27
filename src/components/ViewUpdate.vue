@@ -84,10 +84,6 @@ export default {
   table {
     > tbody {
       > tr {
-        th {
-          text-align: left;
-          vertical-align: middle;
-        }
         > td {
           font-size: 0;
           border: 0;

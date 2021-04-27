@@ -58,7 +58,6 @@ export default {
 .filter {
   height: 59px;
   .dropdown {
-    margin-right: 10px;
     margin-bottom: 20px;
     button {
       display: flex;

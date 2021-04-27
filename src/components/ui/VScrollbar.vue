@@ -18,9 +18,9 @@ export default {
     const $thisScrollbar = $(this.$vnode.elm);
     $thisScrollbar.scrollbar();
 
-    $(window).resize(function() {
-      $thisScrollbar.scrollbar();
-    });
+    // $(window).resize(function() {
+    //   $thisScrollbar.scrollbar();
+    // });
   }
 }
 </script>

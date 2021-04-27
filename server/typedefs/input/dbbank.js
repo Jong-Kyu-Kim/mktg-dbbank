@@ -45,7 +45,7 @@ module.exports = `
     count: Int
   }
 
-  input DBBankCustomerHistories {
+  input DBBankCustomerHistory {
     name: String
     company: String
     department: String
@@ -58,4 +58,4 @@ module.exports = `
     classification: String
     modify: Date
   }
-`
+`;

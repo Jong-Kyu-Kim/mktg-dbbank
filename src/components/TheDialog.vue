@@ -85,8 +85,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 25px;
-    //background-color: #F0F2F5;
+    padding: 20px 25px;    
     background-color: #fff;
     border-radius: 5px 5px 0px 0px;
     .ui-dialog-title {
@@ -159,7 +158,17 @@ export default {
       }
     }
   }
-} 
+}
+
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #aaaaaa;
+  opacity: .3;  
+}
 
 .ui-front {
   z-index: 100;

@@ -1,16 +1,22 @@
 module.exports = {
   query: `
     dbbankCount(filter: DBBankFilter): Int
-    dbbankCustomers(filter: DBBankFilter, sort: [DBBankSort], skip: Int, limit: Int): [DBBankCustomers]
-    dbbankTargetItems(filter: DBBankFilter, target: String, skip: Int): [DBBankCustomers]
+    dbbankNewCustomers: Int
+    dbbankCustomers(filter: DBBankFilter, sort: [DBBankSort], skip: Int, limit: Int): [DBBankCustomer]
+    dbbankTargetItems(filter: DBBankFilter, target: String, skip: Int): [DBBankCustomer]
+    dbbankSettings(_id: String, target: String, name: String value: String): [DBBankSetting]
   `,
   mutation: `
-    updateDBBankCustomer(_id: String, target: String, value: String): DBBankCustomers    
-    removeDBBankCustomer(_id: String): DBBankCustomers
-    concatDBBankCustomer(updateId: String, histories: [DBBankCustomerHistories], deleteId: String): DBBankCustomers
+    addDBBankCustomers: [DBBankCustomer]
+    updateDBBankCustomer(_id: String, target: String, value: String): DBBankCustomer    
+    removeDBBankCustomer(_id: String): DBBankCustomer
+    concatDBBankCustomer(updateId: String, histories: [DBBankCustomerHistory], deleteId: String): DBBankCustomer    
+    createDBBankSetting(target: String, name: String, value: String, order: Int): DBBankSetting
+    updateDBBankSetting(_id: String, target: String, name: String, value: String, order: Int, inc: Int): DBBankSetting
+    removeDBBankSetting(_id: String): DBBankSetting
   `,
-  dbbankCustomers: `
-    type DBBankCustomers {
+  dbbankCustomer: `
+    type DBBankCustomer {
       _id: String
       name: String
       company: String
@@ -26,7 +32,16 @@ module.exports = {
       exist: Boolean
       returned: String
       modify: Date
-      histories: [DBBankCustomers]
+      histories: [DBBankCustomer]
     }
-  `
-}
+  `,
+  dbbankSetting: `
+    type DBBankSetting {
+      _id: String
+      target: String
+      name: String
+      value: String
+      order: Int
+    }
+  `,
+};

@@ -24,6 +24,7 @@ module.exports = `
     dept: String
   }
 
-  ${type.dbbankCustomers}
+  ${type.dbbankCustomer}
+  ${type.dbbankSetting}
   ${input}
 `;

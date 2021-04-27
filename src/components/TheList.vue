@@ -11,7 +11,11 @@
         </v-flex>
 
         <v-flex class="between">
-          <ListDownloadContainer />
+          <v-flex>
+            <ListDownloadContainer />
+            <ListAddContainer />
+          </v-flex>
+          
           <ListSearchContainer />
         </v-flex>
 
@@ -37,6 +41,7 @@
 import Layout from './TheLayout';
 import { VFixed, VFlex, VH2 } from './ui';
 import ListDownloadContainer from 'containers/ListDownloadContainer';
+import ListAddContainer from 'containers/ListAddContainer';
 import ListSearchContainer from 'containers/ListSearchContainer';
 import ListProductContainer from 'containers/ListProductContainer';
 import ListFilterContainer from 'containers/ListFilterContainer';
@@ -52,6 +57,7 @@ export default {
     VFlex,
     VH2,
     ListDownloadContainer,
+    ListAddContainer,
     ListSearchContainer,
     ListFilterContainer,
     ListProductContainer,

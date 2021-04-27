@@ -73,7 +73,7 @@ export default {
     }  
   }
   + .checkbox {
-    margin-left: 15px;
+    margin-left: 5px;
   }
 }
 </style>

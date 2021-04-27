@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-btn class="btn primary" :click="handleDownload">
-      <span>엑셀파일 다운로드</span>
+    <v-btn class="btn primary download" :click="handleDownload">
+      <span>다운로드</span>
     </v-btn>
   </div>  
 </template>

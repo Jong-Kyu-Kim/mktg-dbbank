@@ -82,7 +82,7 @@ export default {
         });
         const { updateId, deleteId } = this.concat;
         this.$apollo.mutate({
-          mutation: gql`mutation ($updateId: String!, $histories: [DBBankCustomerHistories], $deleteId: String) {
+          mutation: gql`mutation ($updateId: String!, $histories: [DBBankCustomerHistory], $deleteId: String) {
             concatDBBankCustomer(updateId: $updateId, histories: $histories) {
               __typename
             }

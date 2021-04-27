@@ -87,8 +87,6 @@ export default {
         th {
           padding-top: 10px;
           height: 36px;
-          vertical-align: middle;
-          text-align: left;
           background-color: $white;
           border-bottom: $border-light;
           z-index: 1;        

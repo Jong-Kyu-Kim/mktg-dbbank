@@ -8,6 +8,7 @@
 .flex {
   display: flex;
   align-items: center;
+  gap: 10px;
   &.between {
     justify-content: space-between;
   }

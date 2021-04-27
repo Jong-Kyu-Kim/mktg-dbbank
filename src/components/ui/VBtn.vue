@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="e => click()">
+  <button class="btn" :disabled="disabled" @click="e => click()">
     <slot />
   </button>
 </template>
@@ -10,6 +10,10 @@ export default {
     click: {
       type: Function,
       default() {}
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -29,6 +33,7 @@ export default {
     }
   }
   &:disabled, &.disabled {
+    cursor: default;
     &:hover {
       text-decoration: none;
     }
@@ -56,7 +61,12 @@ export default {
     span {
       font-weight: 700;
       color: $white !important;
-    }    
+    }
+    &.download {
+      padding-left: 31px;
+      background: url(~svg/ico_download_light.svg) $primary no-repeat left 10px center;
+      background-size: 16px;
+    }        
     &:hover {
       text-decoration: none;
       background-color: #5F96FA;
@@ -74,7 +84,12 @@ export default {
     span {
       font-weight: 700;
       color: $text-dark;      
-    }    
+    }
+    /* &.plus {
+      padding-left: 31px;
+      background: url(~svg/ico_plus.svg) $bg-secondary no-repeat left 10px center;
+      background-size: 18px;
+    }         */
     &:hover {
       text-decoration: none;
       background-color: #E3E5E8;
@@ -88,10 +103,7 @@ export default {
         color: #BDC2C7 !important;
       }      
     }
-  }  
-  + .btn {
-    margin-left: 10px;
-  }  
+  }
 }
 
 .login .btn {
